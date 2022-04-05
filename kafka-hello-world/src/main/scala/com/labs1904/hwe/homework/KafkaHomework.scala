@@ -14,8 +14,8 @@ object KafkaHomework {
    */
 
     //TODO: If these are given in class, change them so that you can run a test. If not, don't worry about this step
-  val BootstrapServer = "change-me"
-  val Topic: String = "change-me"
+  val BootstrapServer = "localhost:9092"
+  val Topic: String = "quickstart-events"
 
   implicit val formats: DefaultFormats.type = DefaultFormats
 
@@ -23,23 +23,33 @@ object KafkaHomework {
 
     // Create the KafkaConsumer
     //TODO: Write in a comment what these lines are doing. What are the properties necessary to instantiate a consumer?
+
+    // Get the properties from the Bootstrap server (localhost:9092)
     val properties = getProperties(BootstrapServer)
+    // Create a new consumer using the properties previously mentioned.
     val consumer: KafkaConsumer[String, String] = new KafkaConsumer[String, String](properties)
 
 
     //TODO: What does this line mean? Write your answer in a comment below
+
+    // This will establish a connection to the topic. This type of connection is used to read (consume) the events
     consumer.subscribe(Arrays.asList(Topic))
 
     while (true) {
       // TODO: Change this to be every 5 seconds
-      val duration: Duration = Duration.ofMillis(100)
+      val duration: Duration = Duration.ofMillis(5000)
 
       //TODO: Look up the ConsumerRecords class below, in your own words what is the class designed to do?
+
+      // This is the entry point in the application (consumer).. for the topic's data/events.
       val records: ConsumerRecords[String, String] = consumer.poll(duration)
+
 
       records.forEach((record: ConsumerRecord[String, String]) => {
         // Retrieve the message from each record
         //TODO: Describe why we need the .value() at the end of record
+
+        // its a key value pair, we need value to at the "content" or the message
         val message = record.value()
 
         //TODO: If you were given the values for the bootstrap servers in class, run the app with the green play button and make sure it runs successfully. You should see message(s) printing out to the screen

@@ -30,6 +30,12 @@ class StretchProblemsTests extends FunSpec {
       assert(StretchProblems.getNextBiggestNumber(67809) === 67890)
     }
 
+    it("should return -1 if single digit number give") {
+      assert(StretchProblems.getNextBiggestNumber(1) === -1)
+      assert(StretchProblems.getNextBiggestNumber(9) === -1)
+
+    }
+
     it("should return -1 for straightforward examples") {
       assert(StretchProblems.getNextBiggestNumber(21) === -1)
       assert(StretchProblems.getNextBiggestNumber(54321) === -1)
