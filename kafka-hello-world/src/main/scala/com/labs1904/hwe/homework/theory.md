@@ -24,6 +24,7 @@ Event Driven (date is now a stream) Newspaper Snapshot vs newsfeed. Store events
 The move from data as an object to data as an event requires a whole platform to support the new model.
 Kafka is a "distributed log". Batch old (slow) -> Event driven (immediate). 
 #### What is Kafka?
+Kafka is an tool for getting streaming events into a place where they can be further precessed.
 * Helpful resource: [Kafka in 6 minutes](https://youtu.be/Ch5VhJzaoaI) 
 
 #### Describe each of the following with an example of how they all fit together: 
