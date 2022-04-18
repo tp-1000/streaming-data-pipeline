@@ -19,13 +19,14 @@ reword confusing descriptions in a way that makes sense to you.
 
 ## Questions
 #### What is a NoSQL database? 
-It is a database that does not have to adhere to relational database model (multiple tables that have records that relate to another table). Data can be stored in ways the is better suited for 
-retrieval or writing making it different from what a traditional relational database may offer.
+It is a database that does not have to adhere to relational database model. Data can be stored/organized in ways that are better suited for 
+retrieval or writing of that data. It excels at handling large
+amounts of data that are infrequently accessed and database is often times distributed across commodity hardware.
 
 #### In your own words, what is Apache HBase? 
 It is a distributed database (existing across multiple nodes). It works with HDFS (hadoop distributed file system or similar)
-It is a NoSQL database.
-Basically four types of NoSQL - 
+It is a NoSQL database. It stores data im immutable SStables
+Offers basically four types of NoSQL - 
 1) Key Value
 2) Document-based
 3) Column-based
@@ -39,13 +40,10 @@ Cost effective horizontal scaling.
 
 s - lots of data (millions or billions of rows)
 s - scales horizontal
-s - random selects and scans by key
-s - variable schema
-w - 
+s - supports multiple schemas
 s - automatic partitioning
-s - scale automatially
 s - fault tolerance
-s - mapreduce destibuted processing
+
 
 
 HDFS->HBASE->Zookeeper->JavaAPI->tools
@@ -53,12 +51,7 @@ HDFS->HBASE->Zookeeper->JavaAPI->tools
 Weakness - data can be stored using an inefficient modeled negating performance benefits.
 It lacks the consistency of the relational database 
 
-master (managed by zookeeper)
-region server ( one or more, region subset of region rows)
-master is responsible for schema
-
-partitioning - table is horizontally partioning 
-Percistance and data availability - stores in HDFS 
+Weakness - single master node failure can bring down the database
 
 #### Explain the following concepts: 
 * Rowkey - tables are sorted by row keys for column families
@@ -71,9 +64,13 @@ these are combined with timestamp to get a particular value
 #### What are the differences between Get and Put commands in HBase? 
 * [HBase commands](https://www.tutorialspoint.com/hbase/hbase_create_data.htm)
 get contents of row or cell
-put value in row or cell
+* get ’<table name>’,’row1’
+put value in row or 
+* put ’<table name>’,’row1’,’<colfamily:colname>’,’<value>’
 
 #### What is the HBase Scan command for? 
 * [HBase Scan](https://www.tutorialspoint.com/hbase/hbase_scan.htm)
-
+reading data from a table
+scan 'table_name'
 #### What was the most interesting aspect of HBase when went through all the questions? 
+Its ability to maintain data across multiple nodes.
