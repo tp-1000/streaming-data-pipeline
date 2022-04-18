@@ -21,7 +21,7 @@ reword confusing descriptions in a way that makes sense to you.
 #### What is a NoSQL database? 
 It is a database that does not have to adhere to relational database model. Data can be stored/organized in ways that are better suited for 
 retrieval or writing of that data. It excels at handling large
-amounts of data that are infrequently accessed and database is often times distributed across commodity hardware.
+amounts of data that are infrequently accessed and the database is often times distributed across commodity hardware.
 
 #### In your own words, what is Apache HBase? 
 It is a distributed database (existing across multiple nodes). It works with HDFS (hadoop distributed file system or similar)
@@ -46,18 +46,18 @@ s - fault tolerance
 
 
 
-HDFS->HBASE->Zookeeper->JavaAPI->tools
-
 Weakness - data can be stored using an inefficient modeled negating performance benefits.
 It lacks the consistency of the relational database 
 
 Weakness - single master node failure can bring down the database
 
-#### Explain the following concepts: 
-* Rowkey - tables are sorted by row keys for column families
-* Column Qualifier - many qualifiers for each column family
-* Column Family - any number of columns 
+HDFS->HBASE->Zookeeper->JavaAPI->tools
 
+#### Explain the following concepts: 
+* Rowkey - primary key. tables are sorted by row keys for ordering within column families
+* Column Qualifier - many qualifiers for each column family (basically a column)
+* Column Family - Grouping of columns in a table. Column families are stored together physically.
+  [basics](https://www.ibm.com/docs/en/db2-big-sql/5.0.4?topic=performance-hbase-basics)
 these are combined with timestamp to get a particular value
 
 
