@@ -19,23 +19,59 @@ reword confusing descriptions in a way that makes sense to you.
 
 ## Questions
 #### What is a NoSQL database? 
-
+It is a database that does not have to adhere to relational database model (multiple tables that have records that relate to another table). Data can be stored in ways the is better suited for 
+retrieval or writing making it different from what a traditional relational database may offer.
 
 #### In your own words, what is Apache HBase? 
-
+It is a distributed database (existing across multiple nodes). It works with HDFS (hadoop distributed file system or similar)
+It is a NoSQL database.
+Basically four types of NoSQL - 
+1) Key Value
+2) Document-based
+3) Column-based
+4) Graph-based
 
 #### What are some strengths and limitations of HBase? 
 * [HBase By Examples](https://sparkbyexamples.com/apache-hbase-tutorial/)
+Strength - storage options can be tailored to the data  
+Better read/write preference for high volume and size of data  
+Cost effective horizontal scaling.  
+
+s - lots of data (millions or billions of rows)
+s - scales horizontal
+s - random selects and scans by key
+s - variable schema
+w - 
+s - automatic partitioning
+s - scale automatially
+s - fault tolerance
+s - mapreduce destibuted processing
+
+
+HDFS->HBASE->Zookeeper->JavaAPI->tools
+
+Weakness - data can be stored using an inefficient modeled negating performance benefits.
+It lacks the consistency of the relational database 
+
+master (managed by zookeeper)
+region server ( one or more, region subset of region rows)
+master is responsible for schema
+
+partitioning - table is horizontally partioning 
+Percistance and data availability - stores in HDFS 
 
 #### Explain the following concepts: 
-* Rowkey
-* Column Qualifier
-* Column Family
+* Rowkey - tables are sorted by row keys for column families
+* Column Qualifier - many qualifiers for each column family
+* Column Family - any number of columns 
+
+these are combined with timestamp to get a particular value
 
 
 #### What are the differences between Get and Put commands in HBase? 
 * [HBase commands](https://www.tutorialspoint.com/hbase/hbase_create_data.htm)
-
+get contents of row or cell
+put value in row or cell
 
 #### What is the HBase Scan command for? 
 * [HBase Scan](https://www.tutorialspoint.com/hbase/hbase_scan.htm)
